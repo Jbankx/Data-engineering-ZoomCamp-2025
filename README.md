@@ -3,7 +3,7 @@
 
 <img src="images/architecture/arch_v4_workshops.jpg" />
 
-Syllabus
+## Syllabus
 
 * [Module 1: Containerization and Infrastructure as Code](01-docker-terraform/)
 * [Module 2: Workflow Orchestration](02-workflow-orchestration/)
@@ -16,8 +16,8 @@ Syllabus
 * Week 1 and 2: working on your project
 * Week 3: reviewing your peers
 
-[More details](projects)
 
-Course support: alexey@datatalks.club
+## Course support: 
+* alexey@datatalks.club
 
 
