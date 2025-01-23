@@ -18,5 +18,6 @@
 
 
 ## Homework Submissions
+This README file of this repository will contain solutions that have SQL or shell commands (not code like Python files) file format
 
 
