@@ -16,7 +16,7 @@
 * Week 1 and 2: working on your project
 * Week 3: reviewing your peers
 
-/
+
 ## Homework Submissions
 
 
