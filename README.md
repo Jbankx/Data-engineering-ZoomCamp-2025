@@ -1,8 +1,11 @@
 # Data Engineering Zoomcamp
+## Overview
+
+<img src="images/architecture/arch_v4_workshops.jpg" />
 
 Syllabus
 
-* [Module 1: Containerization and Infrastructure as Code](#module-1-containerization-and-infrastructure-as-code)
+* [Module 1: Containerization and Infrastructure as Code](01-docker-terraform/)
 * [Module 2: Workflow Orchestration](#module-2-workflow-orchestration)
 * [Workshop 1: Data Ingestion](#workshop-1-data-ingestion)
 * [Module 3: Data Warehouse](#module-3-data-warehouse)
@@ -37,7 +40,5 @@ Syllabus
 
 [More details](projects)
 
-## Overview
 
-<img src="images/architecture/arch_v4_workshops.jpg" />
 
