@@ -13,8 +13,35 @@
 * [Module 5: Batch processing](05-batch/)
 * [Module 6: Streaming](06-streaming/)
 * [Project](projects)
-* Week 1 and 2: working on your project
-* Week 3: reviewing your peers
+** Week 1 and 2: working on your project
+** Week 3: reviewing your peers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Course support: 
