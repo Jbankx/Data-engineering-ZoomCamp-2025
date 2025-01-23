@@ -17,7 +17,6 @@
 * Week 3: reviewing your peers
 
 /
-/
-## Homework
+## Homework Submissions
 
 
