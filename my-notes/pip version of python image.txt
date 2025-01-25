@@ -1,0 +1,11 @@
+--Question
+What is the version of the pip in the image when you run:
+docker with the python:3.12.8 image in an interactive mode using the entrypoint bash.
+
+
+
+--Step 1
+docker run -it --entrypoint bash python:3.12.8
+
+--check the version of the pip in the image
+pip --version

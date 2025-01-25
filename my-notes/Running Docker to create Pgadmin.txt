@@ -1,0 +1,10 @@
+--Running Docker to create PgAdmin and map the data into a folder
+
+
+docker run -it -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" -e PGADMIN_DEFAULT_PASSWORD="root" -p 8080:80 --name pgadmin --net pg dpage/pgadmin4
+
+
+--If above does not work because --net pg is not set use the below (not that docker-compose.yaml solves this):
+docker run -it -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" -e PGADMIN_DEFAULT_PASSWORD="root" -p 8080:80 dpage/pgadmin4
+
+
