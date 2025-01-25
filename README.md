@@ -20,4 +20,7 @@
 ## Homework Submissions
 This README file of this repository will contain the solutions that have SQL or shell commands (not code like Python files) file format
 
+* [Week 1 homework](homework-submissions/week-1/)
+* [Week 1 homework](homework-submissions/week-2/)
+
 
