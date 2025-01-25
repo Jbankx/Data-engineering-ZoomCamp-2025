@@ -1,3 +1,8 @@
+# Note: This code is the result of the script conversion of "upload-data.ipynb"
+# To run the script in bash use:
+# python ingest_data.py --user=root --password=root --host=localhost --port=5432 db=ny_taxi --table_name=yellow_taxi_trips --url=<insert url name>
+
+
 #!/usr/bin/env python
 # coding: utf-8
 
