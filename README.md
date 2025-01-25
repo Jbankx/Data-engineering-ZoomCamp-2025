@@ -16,7 +16,8 @@
 * Week 1 and 2: working on your project
 * Week 3: reviewing your peers
 
-
+/
+/
 ## Homework Submissions
 This README file of this repository will contain the solutions that have SQL or shell commands (not code like Python files) file format
 
