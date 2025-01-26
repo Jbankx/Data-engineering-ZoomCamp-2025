@@ -169,37 +169,4 @@ FROM cte_tips_partition
 		dropoff_location
 ORDER BY maximum_drop_off_tip DESC
 ;
-----------------------------------------------------------------------
---QUESTION 6 (OPTION 2)
-WITH cte_all_tips as(
 
-SELECT 
-	lpep_pickup_datetime::DATE AS pickup_date,
-	lpep_dropoff_datetime::DATE AS dropoff_date,
-	pickups."Zone" AS pickup_zone,
-	dropoffs."Zone" AS dropoff_zone,
-	tip_amount
-	--SUM(tip_amount::DECIMAL) OVER(PARTITION BY dropoffs."Zone") AS total_tip_by_DO_zone
-	
-FROM 
-	public.green_taxi_data AS t
-INNER JOIN 
-	public.zones AS pickups  ON t."PULocationID" = pickups."LocationID"  
-INNER JOIN
-	public.zones AS dropoffs  ON t."DOLocationID" = dropoffs."LocationID"  
-WHERE
-	1=1
-	AND EXTRACT(MONTH FROM lpep_pickup_datetime) = '10'
-	AND EXTRACT(YEAR FROM lpep_pickup_datetime) = '2019'
-	AND pickups."Zone" = 'East Harlem North'
-)
-SELECT
-	dropoff_zone,
-	SUM(tip_amount::DECIMAL) AS total_tip
-FROM cte_all_tips
-GROUP BY 
-	dropoff_zone
-ORDER BY total_tip DESC
-LIMIT 5
-;
-)
