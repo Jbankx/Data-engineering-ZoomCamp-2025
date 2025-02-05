@@ -1,0 +1,17 @@
+--Analysing the data
+SELECT * FROM public.yellow_tripdata
+ORDER BY filename DESC
+LIMIT 100;
+
+--Data count
+SELECT COUNT(1) FROM public.green_tripdata
+WHERE filename LIKE '%green_tripdata_2020%';
+
+SELECT DISTINCT(filename) FROM public.green_tripdata;
+
+
+--Data count(Green trip 2020)
+SELECT * FROM public.green_tripdata
+LIMIT 10;
+
+
