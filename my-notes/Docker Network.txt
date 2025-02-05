@@ -31,6 +31,9 @@ Note:
 Once created we will have a container (2_docker_sql) that runs 2 images. 
 The single containers of postgres and pgadmin will still be there.
 
+Starting:
+docker compose up
+
 Closing:
 docker compose down
 
