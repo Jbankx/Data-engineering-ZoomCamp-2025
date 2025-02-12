@@ -13,7 +13,7 @@ inputs:
   - id: year
     type: SELECT
     displayName: Select year
-    values: ["2019", "2020"]
+    values: ["2019", "2020", "2021"] # added "2021" as default for homework too
     defaults: "2019"
     allowCustomValue: true # allows you to type 2021 from the UI for the homework 🤗
 
@@ -140,6 +140,23 @@ tasks:
             INSERT (unique_row_id, filename, VendorID, tpep_pickup_datetime, tpep_dropoff_datetime, passenger_count, trip_distance, RatecodeID, store_and_fwd_flag, PULocationID, DOLocationID, payment_type, fare_amount, extra, mta_tax, tip_amount, tolls_amount, improvement_surcharge, total_amount, congestion_surcharge)
             VALUES (S.unique_row_id, S.filename, S.VendorID, S.tpep_pickup_datetime, S.tpep_dropoff_datetime, S.passenger_count, S.trip_distance, S.RatecodeID, S.store_and_fwd_flag, S.PULocationID, S.DOLocationID, S.payment_type, S.fare_amount, S.extra, S.mta_tax, S.tip_amount, S.tolls_amount, S.improvement_surcharge, S.total_amount, S.congestion_surcharge);
 
+# Recommended to remove external and temp table for better readability 
+# (I chose just to drop the temp table because we can use the ext one for now to tell us details about what has been loaded month-year without impacting storage capacity)
+
+      # External table drop
+      #- id: bq_yellow_drop_ext_table
+      #  type: io.kestra.plugin.gcp.bigquery.Query
+      #  sql: |
+      #    DROP EXTERNAL TABLE IF EXISTS `{{kv('GCP_PROJECT_ID')}}.{{render(vars.table)}}_ext`
+
+      # temp table drop
+      - id: bq_yellow_drop_temp_table
+        type: io.kestra.plugin.gcp.bigquery.Query
+        sql: |
+          DROP TABLE IF EXISTS `{{kv('GCP_PROJECT_ID')}}.{{render(vars.table)}}`
+
+
+
   - id: if_green_taxi
     type: io.kestra.plugin.core.flow.If
     condition: "{{inputs.taxi == 'green'}}"
@@ -233,6 +250,22 @@ tasks:
           WHEN NOT MATCHED THEN
             INSERT (unique_row_id, filename, VendorID, lpep_pickup_datetime, lpep_dropoff_datetime, store_and_fwd_flag, RatecodeID, PULocationID, DOLocationID, passenger_count, trip_distance, fare_amount, extra, mta_tax, tip_amount, tolls_amount, ehail_fee, improvement_surcharge, total_amount, payment_type, trip_type, congestion_surcharge)
             VALUES (S.unique_row_id, S.filename, S.VendorID, S.lpep_pickup_datetime, S.lpep_dropoff_datetime, S.store_and_fwd_flag, S.RatecodeID, S.PULocationID, S.DOLocationID, S.passenger_count, S.trip_distance, S.fare_amount, S.extra, S.mta_tax, S.tip_amount, S.tolls_amount, S.ehail_fee, S.improvement_surcharge, S.total_amount, S.payment_type, S.trip_type, S.congestion_surcharge);
+
+# Recommended to remove external and temp table for better readability 
+# (I chose just to drop the temp table because we can use the ext one for now to tell us details about what has been loaded month-year without impacting storage capacity)
+      # External table drop
+      #- id: bq_green_drop_ext_table
+      #  type: io.kestra.plugin.gcp.bigquery.Query
+      #  sql: |
+      #    DROP EXTERNAL TABLE IF EXISTS `{{kv('GCP_PROJECT_ID')}}.{{render(vars.table)}}_ext`
+
+      # temp table drop
+      - id: bq_green_drop_temp_table
+        type: io.kestra.plugin.gcp.bigquery.Query
+        sql: |
+          DROP TABLE IF EXISTS `{{kv('GCP_PROJECT_ID')}}.{{render(vars.table)}}`
+
+
 
   - id: purge_files
     type: io.kestra.plugin.core.storage.PurgeCurrentExecutionFiles
