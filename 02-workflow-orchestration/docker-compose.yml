@@ -4,6 +4,7 @@ volumes:
   kestra-data:
     driver: local
 
+# Main Postgres connection for our Kestra 
 services:
   postgres:
     image: postgres
@@ -21,6 +22,7 @@ services:
       timeout: 10s
       retries: 10
 
+# Kestra
   kestra:
     image: kestra/kestra:latest
     pull_policy: always
@@ -76,7 +78,7 @@ services:
     ports:
       - "5433:5432"
 
-
+# PG Admin for verification. depends on main postgres
   pgadmin:
     image: dpage/pgadmin4
     environment:
