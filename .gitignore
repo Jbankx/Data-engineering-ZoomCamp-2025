@@ -6,6 +6,7 @@
 **.terraform
 **.terraform.lock.*
 **google_credentials.json
+**.json
 **logs/
 **.env
 **.venv

@@ -17,7 +17,7 @@ tasks:
     namespace: "{{flow.namespace}}"
     gitDirectory: 04-analytics-engineering/taxi_rides_ny
     dryRun: false
-    # disabled: true # this Git Sync is needed only when running it the first time, afterwards the task can be disabled
+    disabled: true # this Git Sync is needed only when running it the first time, afterwards the task can be disabled (disabled on 12.02.25)
 
   - id: dbt-build
     type: io.kestra.plugin.dbt.cli.DbtCLI
@@ -57,6 +57,6 @@ description: |
   ```yaml
   sources:
     - name: staging
-      database: kestra-sandbox 
+      database: local-proxy-450707-i1 # changed to the db (12.02.25) 
       schema: zoomcamp
   ```
