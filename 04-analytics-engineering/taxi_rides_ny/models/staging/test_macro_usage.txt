@@ -3,4 +3,4 @@ select distinct
 from {{ source("staging", "green_tripdata") }}
 where vendorid is not null
 
---Pull request purpose --delete if required (this line a )
+--Pull request purpose --delete if required (this line)
