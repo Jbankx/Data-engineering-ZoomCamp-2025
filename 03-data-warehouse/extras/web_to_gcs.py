@@ -1,3 +1,6 @@
+#Note: For some reason it gives an error after first month upload. Hence the use of the "ipynb" FILE
+#Delete downloaded files (optional). I just added them to the git ignore
+
 import io
 import os
 import requests
@@ -11,10 +14,10 @@ Pre-reqs:
 3. Set GCP_GCS_BUCKET as your bucket or change default value of BUCKET
 """
 
-# services = ['fhv','green','yellow']
+services = ['fhv','green','yellow']
 init_url = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/'
 # switch out the bucketname
-BUCKET = os.environ.get("GCP_GCS_BUCKET", "dtc-data-lake-bucketname")
+BUCKET = os.environ.get("GCP_GCS_BUCKET", "kestra-zoomcamp-jalhassan-bucket") # changed to my bucket name
 
 
 def upload_to_gcs(bucket, object_name, local_file):
@@ -59,8 +62,7 @@ def web_to_gcs(year, service):
         print(f"GCS: {service}/{file_name}")
 
 
-web_to_gcs('2019', 'green')
-web_to_gcs('2020', 'green')
-# web_to_gcs('2019', 'yellow')
-# web_to_gcs('2020', 'yellow')
 
+# web_to_gcs('2020', 'green') --done 01.03.25
+web_to_gcs('2020', 'yellow') 
+web_to_gcs('2019', 'fhv')
