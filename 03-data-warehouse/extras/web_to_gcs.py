@@ -14,7 +14,7 @@ Pre-reqs:
 3. Set GCP_GCS_BUCKET as your bucket or change default value of BUCKET
 """
 
-services = ['fhv','green','yellow']
+services = ['fhv','fhvhv','green','yellow']
 init_url = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/'
 # switch out the bucketname
 BUCKET = os.environ.get("GCP_GCS_BUCKET", "kestra-zoomcamp-jalhassan-bucket") # changed to my bucket name
@@ -64,5 +64,10 @@ def web_to_gcs(year, service):
 
 
 # web_to_gcs('2020', 'green') --done 01.03.25
-web_to_gcs('2020', 'yellow') 
-web_to_gcs('2019', 'fhv')
+# web_to_gcs('2020', 'yellow') --done 01.03.25
+# web_to_gcs('2020', 'yellow') 
+# web_to_gcs('2019', 'fhv')
+
+# For-hire vehicles high volume (FHVHV). Note. you will have to modify the loop above to be able to get just the data for fhvhv
+# web_to_gcs('2019', 'fhvhv')  
+# web_to_gcs('2021', 'fhvhv') 
