@@ -1,7 +1,3 @@
-{{ config(
-    materialized='table' 
-) }}
-
 
 --Question 5:
 /*
@@ -16,9 +12,9 @@ WITH quarterly_data AS (
         DATE_TRUNC(CAST(pickup_datetime AS DATE), QUARTER) AS quarter_start,
         EXTRACT(QUARTER FROM pickup_datetime) AS quarter_number,
         EXTRACT(YEAR FROM pickup_datetime) AS year,       
-        SUM(total_amount) AS current_year_revenue
+        SUM(total_amount) AS total_revenue
     FROM
-        {{ ref('fact_trips') }}
+        `local-proxy-450707-i1`.`dbt_jalhassan`.`fact_trips`
     WHERE 
         --Removing outliers for clean data
         (EXTRACT(YEAR FROM pickup_datetime) >= 2019 AND EXTRACT(YEAR FROM pickup_datetime) <= 2021)
@@ -30,7 +26,8 @@ WITH quarterly_data AS (
         
 ),
 --CTE yoy_growth:
---Uses window functions to calculate the previous year's revenue (LAG(total_revenue, 1) OVER (PARTITION BY quarter_number, service_type ORDER BY year))
+--Uses window functions to calculate the previous year's revenue (LAG(total_revenue, 1)) for the same quarter.
+--Computes the YoY growth using the formula: ((\text{Current Year Revenue} - \text{Previous Year Revenue}) / \text{Previous Year Revenue} \times 100).
 
 yoy_growth AS (
     SELECT
@@ -44,9 +41,8 @@ yoy_growth AS (
         END 
         AS quarter_number,        
         year,
-        current_year_revenue, 
-        LAG(current_year_revenue, 1) OVER(PARTITION BY quarter_number, service_type ORDER BY year) AS previous_year_revenue
-
+        total_revenue, 
+        LAG(total_revenue, 1) OVER(PARTITION BY quarter_number, service_type ORDER BY year) AS previous_year_revenue
     FROM
         quarterly_data
 
@@ -57,18 +53,12 @@ yoy_growth AS (
         quarter_number,
         year,
         year||'-'||quarter_number AS year_quarter,
-        current_year_revenue,
-        previous_year_revenue,
-        current_year_revenue - previous_year_revenue AS YOY_growth_amount,
-        --Computes the YoY growth % using the formula: if previous_year_revenue : 100 THEN (current_year_revenue - previous_year_revenue) : x
-        ROUND((((current_year_revenue - previous_year_revenue) / previous_year_revenue) * 100),2) AS YOY_growth_percentage
-
-
+        total_revenue,
+        previous_year_revenue     
 
     FROM yoy_growth
     ORDER BY
         service_type,
         quarter_start
 
---Considering the YoY Growth in 2020, which were the yearly quarters with the best (or less worse) and worst results for green, and yellow
---Answer. green: {best: 2020/Q1, worst: 2020/Q2}, yellow: {best: 2020/Q1, worst: 2020/Q2}
+               
