@@ -2,14 +2,18 @@ version: 2
 
 sources:
   - name: staging
-    database: "{{ env_var('DBT_DATABASE', 'local-proxy-450707-i1') }}"  #Changed to my db name in BigQuery
-    schema: "{{ env_var('DBT_SCHEMA', 'zoomcamp') }}" # Changed to my schema name in BigQuery
+    database: "{{ env_var('DBT_DATABASE', 'local-proxy-450707-i1') }}"
+    schema: "{{ env_var('DBT_SCHEMA', 'zoomcamp') }}"
       # loaded_at_field: record_loaded_at
     tables:
       - name: green_tripdata
       - name: yellow_tripdata
          # freshness:
            # error_after: {count: 6, period: hour}
+      - name: external_fhv_tripdata
+      - name: external_fhvhv_tripdata
+
+
 
 models:
     - name: stg_green_tripdata

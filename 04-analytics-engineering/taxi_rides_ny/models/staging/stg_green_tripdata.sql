@@ -44,7 +44,8 @@ from tripdata
 where rn = 1
 
 
--- dbt build --select <model_name> --vars '{'is_test_run': 'false'}'
+
+-- dbt build --select <model.sql> --vars '{'is_test_run: false}'
 
 --Friendly reminder: you need to turn off test-mode (commented out below), so that we're able to have full big dataset on visualization
 

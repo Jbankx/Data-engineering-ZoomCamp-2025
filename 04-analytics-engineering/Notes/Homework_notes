@@ -1,0 +1,49 @@
+select *
+from {{ ref('fact_trips') }}
+where pickup_datetime >= CURRENT_DATE - INTERVAL '30' DAY
+
+
+
+--step 1
+--Check and define your variable in dbt_project.yml
+
+
+--step 2
+--Next, modify your SQL model to use Jinja templating. 
+--This will allow you to check for command line arguments, environment variables, and default values.
+
+{% set days = var('days', env_var('DAYS', var('default_days'))) %}
+
+SELECT *
+FROM {{ ref('fact_trips') }}
+WHERE pickup_datetime >= CURRENT_DATE() - INTERVAL '{{ days }}' DAY
+
+
+--Option 2
+/*
+Note: 
+"days_back" >> command line arguments
+"DAYS_BACK" >> ENV_VARS
+"30" >> Default value
+*/
+SELECT *
+FROM {{ ref('fact_trips') }}
+WHERE clause to pickup_datetime >= CURRENT_DATE - INTERVAL '{{ var("days_back", env_var("DAYS_BACK", "30")) }}' DAY
+
+
+--Question 4 --Macros and Jinja
+{% macro resolve_schema_for(model_type) -%}
+
+    {%- set target_env_var = 'DBT_BIGQUERY_TARGET_DATASET'  -%}
+    {%- set stging_env_var = 'DBT_BIGQUERY_STAGING_DATASET' -%}
+
+    {%- if model_type == 'core' -%} {{- env_var(target_env_var) -}}
+    {%- else -%}                    {{- env_var(stging_env_var, env_var(target_env_var)) -}}
+    {%- endif -%}
+
+{%- endmacro %}
+
+--And use on your staging, dim_ and fact_ models as:
+{{ config(
+    schema=resolve_schema_for('staging'), 
+) }}
