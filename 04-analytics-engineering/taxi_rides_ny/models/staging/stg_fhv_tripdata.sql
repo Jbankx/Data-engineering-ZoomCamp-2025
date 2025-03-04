@@ -15,7 +15,7 @@ renamed as (
         cast(pickup_datetime as timestamp) as pickup_datetime,
         cast(dropOff_datetime as timestamp) as dropoff_datetime,
 
-    -- identifiers    
+    -- identifiers 
         {{ dbt.safe_cast("pulocationid", api.Column.translate_type("integer")) }} as pickup_locationid,
         {{ dbt.safe_cast("dolocationid", api.Column.translate_type("integer")) }} as dropoff_locationid,
         {{ dbt.safe_cast("sr_flag", api.Column.translate_type("integer")) }} as sr_flag,
@@ -23,7 +23,12 @@ renamed as (
         
 
     from source
+--Week 4 homework requirements
+    where
+        dispatching_base_num IS NOT NULL
+
 
 )
 
 select * from renamed
+
