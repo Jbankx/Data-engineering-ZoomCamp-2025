@@ -1,0 +1,37 @@
+You can use the helper function codegen.get_models and specify a directory and/or prefix to get a list of all matching models, 
+to be passed into model_names list.You can use the helper function codegen.get_models and specify a directory and/or prefix to get a list of all matching models, to be passed into model_names list.
+Note: Click on schema.yml to get your model generated with transformations desired. make sure the columns are correct in the model if not you do not get the below to work when you "compile"
+
+Once compiled, just copy and paste it for your schema.yml file
+
+
+
+Code below to pase in dbt blank page then >> compile >> copy compiled for your schema.
+More info on: https://github.com/dbt-labs/dbt-codegen/tree/0.13.1/#generate_model_yaml-source
+or: https://hub.getdbt.com/dbt-labs/codegen/latest/
+
+{% set models_to_generate = codegen.get_models(directory='staging', prefix='stg_') %}
+{{ codegen.generate_model_yaml(
+    model_names = models_to_generate
+) }}
+
+
+
+Note: above will generate something like this below:
+models:
+    - name: stg_green_tripdata
+      description: >
+        Trip made by green taxis, also known as boro taxis and street-hail liveries.
+        Green taxis may respond to street hails,but only in the areas indicated in green on the
+        map (i.e. above W 110 St/E 96th St in Manhattan and in the boroughs).
+        The records were collected and provided to the NYC Taxi and Limousine Commission (TLC) by
+        technology service providers. 
+      columns:
+          - name: tripid
+            description: Primary key for this table, generated with a concatenation of vendorid+pickup_datetime
+            tests:
+                - unique:
+                    severity: warn
+                - not_null:
+                    severity: warn
+          - name: VendorID 
