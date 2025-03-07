@@ -3,10 +3,12 @@ with
 source as (
 
     select * from {{ source('staging', 'external_fhv_tripdata') }}
+    where
+        dispatching_base_num IS NOT NULL or dispatching_base_num != ''
 
 ),
 
-renamed as (
+fhv_trips as (
 
     select
         {{ dbt.safe_cast("dispatching_base_num", api.Column.translate_type("integer")) }} as dispatching_base_num,
@@ -19,16 +21,15 @@ renamed as (
         {{ dbt.safe_cast("pulocationid", api.Column.translate_type("integer")) }} as pickup_locationid,
         {{ dbt.safe_cast("dolocationid", api.Column.translate_type("integer")) }} as dropoff_locationid,
         {{ dbt.safe_cast("sr_flag", api.Column.translate_type("integer")) }} as sr_flag,
-        {{ dbt.safe_cast("affiliated_base_number", api.Column.translate_type("integer")) }} as affiliated_base_number,
+        {{ dbt.safe_cast("affiliated_base_number", api.Column.translate_type("integer")) }} as affiliated_base_number
         
 
     from source
 --Week 4 homework requirements
     where
-        dispatching_base_num IS NOT NULL
-
+        dispatching_base_num IS NOT NULL 
 
 )
 
-select * from renamed
+select * from fhv_trips
 

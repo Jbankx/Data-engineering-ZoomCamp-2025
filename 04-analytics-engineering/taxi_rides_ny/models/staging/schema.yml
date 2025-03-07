@@ -11,7 +11,6 @@ sources:
          # freshness:
            # error_after: {count: 6, period: hour}
       - name: external_fhv_tripdata
-      - name: external_fhvhv_tripdata
 
 
 
