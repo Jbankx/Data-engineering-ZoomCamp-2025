@@ -2,6 +2,5 @@
 # these are the default directory names, adjust/add to fit your needs (I have added the target/ back just cos I want to see my compiled file)
 # target/ 
 
-
 dbt_packages/
 logs/
