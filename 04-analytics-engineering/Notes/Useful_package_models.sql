@@ -8,7 +8,28 @@
    )
 }}
 
---Example 2: dbt_utils.deduplicate macro
+
+
+--Example 2 (1 week dates)
+{{ dbt_utils.date_spine(
+    datepart="day",
+    start_date="current_date()",
+    end_date="date_add(current_date(), INTERVAL 1 WEEK)"
+   )
+}}
+
+
+
+
+
+
+----------------------------------------------------------------------------
+
+
+
+
+
+--Example 3: dbt_utils.deduplicate macro
 --This macro returns the sql required to remove duplicate rows from a model, source, or CTE.
 with my_cte as (
     select *
