@@ -53,4 +53,12 @@ You can add C:\Program Files\jdk-11.0.25 files in 05-batch of your git repo and 
 --------------------------------------------------------
 bashrc
 To avoid logging the variables required to run the batch examples everytimem you log into the computer.
-Put these to bashrc >> run "nano .bashrc" to edit the file 
+The .bashrc file is a script that runs whenever a new terminal session is started in interactive mode.
+    Put these to bashrc >> run "nano .bashrc" to edit the file 
+    source .bashrc >> to rerun and re-evaluate the code in bashrc to your environment
+
+----------------------------------------------------------
+PySpark
+To run PySpark, we first need to add it to PYTHONPATH:
+    export PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"
+    export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9-src.zip:$PYTHONPATH"
