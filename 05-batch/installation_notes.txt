@@ -46,3 +46,6 @@ Go to the directory specified
 
 Run spark-shell
     ./bin/spark-shell.cmd
+--------------------------------------------------------
+Note:
+You can add C:\Program Files\jdk-11.0.25 files in 05-batch of your git repo and map to these files here if easier
