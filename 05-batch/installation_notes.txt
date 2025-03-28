@@ -9,8 +9,9 @@ Verify it works:
 
 --------------------------------------------------------
 
-Insalling Spark
+hADOOP BINARIES
 
+```
 $ HADOOP_VERSION="3.2.0"
 PREFIX="https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-${HADOOP_VERSION}/bin/"
 
@@ -19,3 +20,29 @@ FILES="hadoop.dll hadoop.exp hadoop.lib hadoop.pdb libwinutils.lib winutils.exe 
 for FILE in ${FILES}; do
   curl -o "${FILE}" "${PREFIX}/${FILE}";
 done
+```
+
+Note: add a file if you want to specify directory of download i.e. >>>>  curl -o "file_path_name" 
+
+
+
+Add to path:
+Example below where we create a variable with the file path/file_name and MAP it to the Env Variable PATH
+    export HADOOP_HOME="/C/Program Files/Spark/hadoop-3.2.0"  
+    export PATH="${HADOOP_HOME}/bin:${PATH}"
+
+-----------------------------------------------------------------
+INSTALLING Spark
+Select version 3.3.2 and unpack it in a folder
+
+export SPARK_HOME="/C/Program Files/spark-3.3.2-bin-hadoop3"
+export PATH="${SPARK_HOME}/bin:${PATH}"
+
+--------------------------------------------------------
+Testing Spark
+Go to the directory specified 
+(I had to place the file in the github repo due to the env variables linked to the command we will run after i.e. $JAVA_HOME)
+    cd spark-3.3.2-bin-hadoop3
+
+Run spark-shell
+    ./bin/spark-shell.cmd
