@@ -1,7 +1,7 @@
 export JAVA_HOME="/C/Program Files/jdk-11.0.25"
 export PATH="${JAVA_HOME}/bin:${PATH}"
 
-export HADOOP_HOME="/C/Program Files/Hadoop Binaries"
+export HADOOP_HOME="/C/Program Files/hadoop-3.2.0"
 export PATH="${HADOOP_HOME}/bin:${PATH}"
 
 export SPARK_HOME="/C/Program Files/spark-3.3.2-bin-hadoop3"

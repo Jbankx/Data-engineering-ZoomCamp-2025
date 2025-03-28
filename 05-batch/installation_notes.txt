@@ -28,7 +28,7 @@ Note: add a file if you want to specify directory of download i.e. >>>>  curl -o
 
 Add to path:
 Example below where we create a variable with the file path/file_name and MAP it to the Env Variable PATH
-    export HADOOP_HOME="/C/Program Files/Spark/hadoop-3.2.0"  
+    export HADOOP_HOME="/C/Program Files/hadoop-3.2.0"  
     export PATH="${HADOOP_HOME}/bin:${PATH}"
 
 -----------------------------------------------------------------
@@ -61,4 +61,11 @@ The .bashrc file is a script that runs whenever a new terminal session is starte
 PySpark
 To run PySpark, we first need to add it to PYTHONPATH:
     export PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"
-    export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9-src.zip:$PYTHONPATH"
+    export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9.5-src.zip:$PYTHONPATH"
+
+On windows you may have to do path conversion from Unix-style to windows style:
+
+    SPARK_WIN=`cygpath -w ${SPARK_HOME}`
+
+    export PYTHONPATH="${SPARK_WIN}\\python\\"
+    export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9-src.zip;$PYTHONPATH"
