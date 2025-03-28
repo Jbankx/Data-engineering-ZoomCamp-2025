@@ -49,3 +49,8 @@ Run spark-shell
 --------------------------------------------------------
 Note:
 You can add C:\Program Files\jdk-11.0.25 files in 05-batch of your git repo and map to these files here if easier
+
+--------------------------------------------------------
+bashrc
+To avoid logging the variables required to run the batch examples everytimem you log into the computer.
+Put these to bashrc >> run "nano .bashrc" to edit the file 
