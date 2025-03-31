@@ -4,7 +4,15 @@ After unpacking the zip file in your desired location, configure it to add to PA
     export JAVA_HOME="/C/Program Files/jdk-11.0.25"
     export PATH="${JAVA_HOME}/bin:${PATH}"
 
+Update (if using file path of github data eng zoomcamp)
+
+    export JAVA_HOME="/c/Users/lourh/OneDrive/Documentos/Junior/Data Engineerig Zoomcamp 2025/data-engineering-zoomcamp/05-batch/spark/jdk-11.0.13"
+    export JAVA_HOME="./jdk-11.0.13"  (Option 2 if cd into the spark directory)
+    export PATH="${JAVA_HOME}/bin:${PATH}"
+
+
 Verify it works: 
+    which java 
     java --version
 
 --------------------------------------------------------
@@ -15,10 +23,18 @@ hADOOP BINARIES
 $ HADOOP_VERSION="3.2.0"
 PREFIX="https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-${HADOOP_VERSION}/bin/"
 
+
 FILES="hadoop.dll hadoop.exp hadoop.lib hadoop.pdb libwinutils.lib winutils.exe winutils.pdb"
 
 for FILE in ${FILES}; do
   curl -o "${FILE}" "${PREFIX}/${FILE}";
+done
+```
+
+--Option_2
+PREFIX_2="https://github.com/cdarlint/winutils/tree/master/hadoop-3.3.6/bin"
+for FILE in ${FILES}; do
+  curl -o "${FILE}" "${PREFIX_2}/${FILE}";
 done
 ```
 
@@ -31,12 +47,23 @@ Example below where we create a variable with the file path/file_name and MAP it
     export HADOOP_HOME="/C/Program Files/hadoop-3.2.0"  
     export PATH="${HADOOP_HOME}/bin:${PATH}"
 
+Option 2 (using github repo)
+    export HADOOP_HOME="/c/Users/lourh/OneDrive/Documentos/Junior/Data Engineerig Zoomcamp 2025/data-engineering-zoomcamp/05-batch/spark/hadoop-3.2.0"
+    export PATH="${HADOOP_HOME}/bin:${PATH}"
 -----------------------------------------------------------------
 INSTALLING Spark
 Select version 3.3.2 and unpack it in a folder
+Or download link using >>> $ curl -O https://archive.apache.org/dist/spark/spark-3.3.2/spark-3.3.2-bin-hadoop3.tgz
+Extract file in path using >>>  tar xzfv spark-3.3.2-bin-hadoop3.tgz 
 
-export SPARK_HOME="/C/Program Files/spark-3.3.2-bin-hadoop3"
-export PATH="${SPARK_HOME}/bin:${PATH}"
+    export SPARK_HOME="/C/Program Files/spark-3.3.2-bin-hadoop3"
+    export PATH="${SPARK_HOME}/bin:${PATH}"
+
+Option 2 (if working in github repo). Full relative path or full path
+    export SPARK_HOME="./spark-3.3.2-bin-hadoop3/"
+    export SPARK_HOME="/c/Users/lourh/OneDrive/Documentos/Junior/Data Engineerig Zoomcamp 2025/data-engineering-zoomcamp/05-batch/spark/spark-3.3.2-bin-hadoop3"
+    export PATH="${SPARK_HOME}/bin:${PATH}"
+
 
 --------------------------------------------------------
 Testing Spark
@@ -68,4 +95,4 @@ On windows you may have to do path conversion from Unix-style to windows style:
     SPARK_WIN=`cygpath -w ${SPARK_HOME}`
 
     export PYTHONPATH="${SPARK_WIN}\\python\\"
-    export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9-src.zip;$PYTHONPATH"
+    export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9.5-src.zip;$PYTHONPATH"
