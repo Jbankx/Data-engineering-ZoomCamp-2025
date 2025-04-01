@@ -16,6 +16,6 @@ export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9.7-src.zip:$PYTHONPATH"
 
 
 # For windows
-SPARK_WIN=`cygpath -w ${SPARK_HOME}`
-export PYTHONPATH="${SPARK_WIN}\\python\\"
-export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9.7-src.zip;$PYTHONPATH"
+#SPARK_WIN=`cygpath -w ${SPARK_HOME}`
+#export PYTHONPATH="${SPARK_WIN}\\python\\"
+#export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9.7-src.zip;$PYTHONPATH"
