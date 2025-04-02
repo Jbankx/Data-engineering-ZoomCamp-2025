@@ -1,13 +1,9 @@
+Notes: just run "soure .bashrc" to get all these environment variables to work
+
 Installing Java version for Windows (Oracle JDK)
 After unpacking the zip file in your desired location, configure it to add to PATH variable:
 
-    export JAVA_HOME="/C/Program Files/jdk-11.0.25"
-    export PATH="${JAVA_HOME}/bin:${PATH}"
-
-Update (if using file path of github data eng zoomcamp)
-
-    export JAVA_HOME="/c/Users/lourh/OneDrive/Documentos/Junior/Data Engineerig Zoomcamp 2025/data-engineering-zoomcamp/05-batch/spark/jdk-11.0.13"
-    export JAVA_HOME="./jdk-11.0.13"  (Option 2 if cd into the spark directory)
+    export JAVA_HOME="/C/tools/jdk-11.0.25"
     export PATH="${JAVA_HOME}/bin:${PATH}"
 
 
@@ -18,9 +14,9 @@ Verify it works:
 --------------------------------------------------------
 
 hADOOP BINARIES
-
+Note: we use this "hadoop-2.7.2" due to errors in writing parquets when using 3.0 above
 ```
-$ HADOOP_VERSION="3.2.0"
+$ HADOOP_VERSION="2.7.2"
 PREFIX="https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-${HADOOP_VERSION}/bin/"
 
 
@@ -32,7 +28,7 @@ done
 ```
 
 --Option_2
-PREFIX_2="https://github.com/cdarlint/winutils/tree/master/hadoop-3.0.1/bin"
+PREFIX_2="https://github.com/cdarlint/winutils/tree/master/hadoop-2.7.2/bin"
 for FILE in ${FILES}; do
   curl -o "${FILE}" "${PREFIX_2}/${FILE}";
 done
@@ -44,23 +40,22 @@ Note: add a file if you want to specify directory of download i.e. >>>>  curl -o
 
 Add to path:
 Example below where we create a variable with the file path/file_name and MAP it to the Env Variable PATH
-    export HADOOP_HOME="/C/Program Files/hadoop-3.2.0"  
+    export HADOOP_HOME="/C/tools/hadoop-2.7.2"  
     export PATH="${HADOOP_HOME}/bin:${PATH}"
 
-Option 2 (using github repo)
-    export HADOOP_HOME="/c/Users/lourh/OneDrive/Documentos/Junior/Data Engineerig Zoomcamp 2025/data-engineering-zoomcamp/05-batch/spark/hadoop-3.2.0"
-    export PATH="${HADOOP_HOME}/bin:${PATH}"
+
 -----------------------------------------------------------------
 INSTALLING Spark
+Note: we use "spark-3.3.2-bin-hadoop2.tgz" due to errors in writing parquets when using 3.0 above
 Select version 3.3.2 and unpack it in a folder
-Or download link using >>> $ curl -O https://archive.apache.org/dist/spark/spark-3.3.2/spark-3.3.2-bin-hadoop3.tgz
-Extract file in path using >>>  tar xzfv spark-3.3.2-bin-hadoop3.tgz 
+Or download link using >>> $ curl -O https://archive.apache.org/dist/spark/spark-3.3.2/spark-3.3.2-bin-hadoop2.tgz
+Extract file in path using >>>  tar xzfv spark-3.3.2-bin-hadoop2.tgz 
 
-    export SPARK_HOME="/C/Program Files/spark-3.3.2-bin-hadoop3"
+    export SPARK_HOME="/C/tools/spark-3.3.2-bin-hadoop2"
     export PATH="${SPARK_HOME}/bin:${PATH}"
 
 Option 2 (if working in github repo). Full relative path or full path
-    export SPARK_HOME="./spark-3.3.2-bin-hadoop3/"
+    export SPARK_HOME="./spark-3.3.2-bin-hadoop2/"
     export SPARK_HOME="/c/Users/lourh/OneDrive/Documentos/Junior/Data Engineerig Zoomcamp 2025/data-engineering-zoomcamp/05-batch/spark/spark-3.3.2-bin-hadoop3"
     export PATH="${SPARK_HOME}/bin:${PATH}"
 
@@ -69,13 +64,13 @@ Option 2 (if working in github repo). Full relative path or full path
 Testing Spark
 Go to the directory specified 
 (I had to place the file in the github repo due to the env variables linked to the command we will run after i.e. $JAVA_HOME)
-    cd spark-3.3.2-bin-hadoop3
+    cd spark-3.3.2-bin-hadoop2
 
 Run spark-shell
     ./bin/spark-shell.cmd
 --------------------------------------------------------
 Note:
-You can add C:\Program Files\jdk-11.0.25 files in 05-batch of your git repo and map to these files here if easier
+You can add C:\tools\jdk-11.0.25 files in 05-batch of your git repo and map to these files here if easier
 
 --------------------------------------------------------
 bashrc
