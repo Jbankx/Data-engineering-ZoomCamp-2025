@@ -18,4 +18,4 @@ export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9.5-src.zip:$PYTHONPATH"
 # For windows (not I edited the last export to double colon ":")
 SPARK_WIN=`cygpath -w ${SPARK_HOME}`
 export PYTHONPATH="${SPARK_WIN}\\python\\"
-export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9.5-src.zip:$PYTHONPATH"
+export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9.5-src.zip;$PYTHONPATH"
