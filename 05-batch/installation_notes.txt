@@ -32,7 +32,7 @@ done
 ```
 
 --Option_2
-PREFIX_2="https://github.com/cdarlint/winutils/tree/master/hadoop-3.3.6/bin"
+PREFIX_2="https://github.com/cdarlint/winutils/tree/master/hadoop-3.0.1/bin"
 for FILE in ${FILES}; do
   curl -o "${FILE}" "${PREFIX_2}/${FILE}";
 done
