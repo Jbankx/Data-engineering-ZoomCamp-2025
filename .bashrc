@@ -4,11 +4,14 @@ export JAVA_HOME="/c/tools/jdk-11.0.25"
 export PATH="${JAVA_HOME}/bin:${PATH}"
 
 #export HADOOP_HOME="/c/Users/lourh/OneDrive/Documentos/Junior/Data Engineerig Zoomcamp 2025/data-engineering-zoomcamp/05-batch/spark/hadoop-3.2.0"
-# We use this hadoop 3.0.0 installed (due to error: Py4JJavaError: An error occurred while calling o34.parquet.)- We just need the winutils.exe really
-export HADOOP_HOME="/c/tools/hadoop-3.2.0"
+# We use this hadoop-2.7.2 installed (due to error: Py4JJavaError: An error occurred while calling o34.parquet.)- We just need the winutils.exe really
+export HADOOP_HOME="/c/tools/hadoop-2.7.2"
 export PATH="${HADOOP_HOME}/bin:${PATH}"
 
-export SPARK_HOME="/c/tools/spark-3.3.2-bin-hadoop3"
+
+# We use this spark-3.3.2-bin-hadoop2 instead (due to error: Py4JJavaError: An error occurred while calling o34.parquet.)- We just need the winutils.exe really
+# Note: the winutils.exe gets pasted into the bin directory afterwards
+export SPARK_HOME="/c/tools/spark-3.3.2-bin-hadoop2"
 export PATH="${SPARK_HOME}/bin:${PATH}"
 
 export PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"
