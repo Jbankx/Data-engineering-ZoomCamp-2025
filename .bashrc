@@ -11,11 +11,12 @@ export PATH="${HADOOP_HOME}/bin:${PATH}"
 export SPARK_HOME="/c/tools/spark-3.3.2-bin-hadoop3"
 export PATH="${SPARK_HOME}/bin:${PATH}"
 
-export PYTHONPATH="${SPARK_HOME}/python/:${PYTHONPATH}"
-export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9.5-src.zip:${PYTHONPATH}"
+export PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"
+export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9.5-src.zip:$PYTHONPATH"
 
 
-# For windows (not I edited the last export to double colon ":")
+# For windows 
 SPARK_WIN=`cygpath -w ${SPARK_HOME}`
+
 export PYTHONPATH="${SPARK_WIN}\\python\\"
-export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9.5-src.zip;${PYTHONPATH}"
+export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9.5-src.zip;$PYTHONPATH"
