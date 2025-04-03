@@ -91,3 +91,11 @@ On windows you may have to do path conversion from Unix-style to windows style:
 
     export PYTHONPATH="${SPARK_WIN}\\python\\"
     export PYTHONPATH="${SPARK_WIN}\\python\\lib\\py4j-0.10.9.5-src.zip;$PYTHONPATH"
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+----------------------------------------------------------
+
+SPARK SQL AND DATA FRAMES
+
+curl -L -O https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhvhv/fhvhv_tripdata_2021-01.csv.gz

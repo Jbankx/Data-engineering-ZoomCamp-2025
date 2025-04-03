@@ -21,6 +21,9 @@ serving_dir
 # Included this files of hadoop due to size and quantity
 **/05-batch/spark-3.3.2-bin-hadoop3/
 **/05-batch/tools/
+**/05-batch/code/*.csv
+**/05-batch/code/*.csv.gz
+
 
 # Default .gitignore content added by dbt Cloud# you shouldn't commit these into source control
 # these are the default directory names, adjust/add to fit your needs
