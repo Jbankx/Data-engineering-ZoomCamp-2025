@@ -97,5 +97,14 @@ On windows you may have to do path conversion from Unix-style to windows style:
 ----------------------------------------------------------
 
 SPARK SQL AND DATA FRAMES
+Download the data  using the option -L -O (due to how the link is directed)
+    curl -L -O https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhvhv/fhvhv_tripdata_2021-01.csv.gz
 
-curl -L -O https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhvhv/fhvhv_tripdata_2021-01.csv.gz
+Unzip it
+    gunzip fhvhv_tripdata_2021-01.csv.gz
+
+----------------------------------------------------------
+----------------------------------------------------------
+You can run interractively when you cd into tools/spark-3.3.2-bin-hadoop2   
+    ./tools/spark-3.3.2-bin-hadoop2/bin/pyspark.cmd
+
