@@ -18,11 +18,12 @@ serving_dir
 !week_6_stream_processing/avro_example/data/rides.csv
 **/03-data-warehouse/extras/*.csv.gz
 **/03-data-warehouse/extras/*.parquet
-# Included this files of hadoop due to size and quantity
+# Included these files of hadoop due to size and quantity
 **/05-batch/spark-3.3.2-bin-hadoop3/
 **/05-batch/tools/
 **/05-batch/code/*.csv
 **/05-batch/code/*.csv.gz
+**/05-batch/code/fhvhv/
 
 
 # Default .gitignore content added by dbt Cloud# you shouldn't commit these into source control
