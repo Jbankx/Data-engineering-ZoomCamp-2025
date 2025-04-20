@@ -108,3 +108,10 @@ Unzip it
 You can run interractively when you cd into tools/spark-3.3.2-bin-hadoop2   
     ./tools/spark-3.3.2-bin-hadoop2/bin/pyspark.cmd
 
+----------------------------------------------------------
+----------------------------------------------------------
+Preparing Yellow and Green taxi data
+Note: I had to change "wget" to curl in "download_data.sh" and make sure the curl had lower case "-o"
+
+----------------------------------------------------------
+----------------------------------------------------------

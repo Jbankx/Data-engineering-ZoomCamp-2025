@@ -24,7 +24,7 @@ serving_dir
 **/05-batch/code/*.csv
 **/05-batch/code/*.csv.gz
 **/05-batch/code/fhvhv/
-
+**/05-batch/code/data/
 
 # Default .gitignore content added by dbt Cloud# you shouldn't commit these into source control
 # these are the default directory names, adjust/add to fit your needs
